@@ -1,0 +1,41 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@model List<Wrong>
+
+@{
+    ViewBag.Title = "Doğru Bilinen Yanlışlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>DÜZENLE</h2>
+
+
+<table class="table table-boardered" background="/FrontendFiles/AdminLTE-3.0.4/images1/doctor.jpg">
+    <tr>
+        <th>ID</th>
+        <th>Kategori</th>
+        <th>Açıklaması</th>
+        <th>Yazarı</th>
+        <th>Tarih</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        @*<th>DETAYLAR</th>*@
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.WrongId</td>
+            <td>@x.Category.CategoryName</td>
+            <td>@x.Description</td>
+            <td>@x.Writer.WriterName @x.Writer.WriterSurname</td>
+            <td>@x.CreatedDate</td>
+            <td><a href="/KnownWrong/DeleteWrong/@x.WrongId" class="btn btn-danger">SİL</a></td>
+            <td><a href="/KnownWrong/EditWrongInformation/@x.WrongId" class="btn btn-warning">GÜNCELLE</a></td>
+            @*<td><a href="#" class="btn btn-success">DETAYLAR</a></td>*@
+        </tr>
+    }
+
+</table>
+
+<a href="/KnownWrong/AddWrongInformation" class="btn btn-primary">NEW</a>

@@ -1,0 +1,37 @@
+﻿@model HealthBlog.Entities.Concrete.Wrong
+
+@{
+    ViewBag.Title = "Bilgi Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EKLE</h2>
+<br />
+
+@using (Html.BeginForm("AddWrongInformation", "KnownWrong", FormMethod.Post))
+{
+    <div class="form-group">
+        @*@Html.Label("Bilgi ID:")
+            @Html.TextBoxFor(x => x.WrongId, new { @class = "form-control" })
+            <br />*@
+
+        @Html.Label("Bilgi Açıklaması:")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Bilgi durumu Girin:")
+        @Html.DropDownListFor(x => x.Status, (List<SelectListItem>)ViewBag.StatusType, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bilgi kategorisi girin:")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.valueCategory, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bilgi yazarı girin:")
+        @Html.DropDownListFor(x => x.WriterId, (List<SelectListItem>)ViewBag.valueWriter, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">ADD</button>
+
+
+    </div>
+
+}
+

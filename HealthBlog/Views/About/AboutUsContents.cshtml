@@ -1,0 +1,100 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<About>
+
+@{
+    ViewBag.Title = "Hakkımızda Admin Sayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+
+@section CssFiles {
+
+
+    <link rel="stylesheet" type="text/css" href="~/FrontendFiles/AdminAbout/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/FrontendFiles/AdminAbout/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/FrontendFiles/AdminAbout/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/FrontendFiles/AdminAbout/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/FrontendFiles/AdminAbout/assets/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/FrontendFiles/AdminAbout/assets/css/style.css">
+}
+
+
+
+
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="container">
+
+
+    <div class="col-lg-8 col-md-8">
+        <div class="content_bottom_left">
+            <div class="single_category wow fadeInDown">
+                <div class="archive_style_1">
+
+
+                    <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <span class="title_text">Hakkımda Yazıları</span> </h2>
+
+                    @foreach (var x in Model)
+                    {
+
+
+                        <div class="business_category_left wow fadeInDown">
+                            <ul class="fashion_catgnav">
+                                <li>
+                                    <div class="catgimg2_container"> <a href="#"><img alt="" src="~/FrontendFiles/AdminAbout/AboutImages/@x.AboutImage"></a> </div>
+                                    @*<div><h2 class="catg_titile"><a href="#">@x.Title</a></h2></div>*@
+                                    <div><h2 class="catg_titile"><a href="#">@x.Title</a><span class="meta_date" style="color: blue;float:right;padding-left:110px;">@x.CreatedDate</span> </h2></div>
+                                    @*<div class="comments_box"> <span class="meta_date" style="color: blue;">@x.CreatedDate.ToString("dd.MM.yyyy")</span> <span class="meta_comment" style="color:red;font-weight:bold;"><a href="/About/DeleteAboutContent/@x.Id">SİL</a></span> <span class="meta_more" style="color:green;font-weight:bold;"><a href="/About/EditAboutContent/@x.Id">DÜZENLE</a></span>  <span class="meta_comment" style="color:red;font-weight:bold;"><a href="/About/MakeActive/@x.Id" style="color:burlywood;">AKTİF YAP</a></span> <span class="meta_comment" style="color:red;font-weight:bold;"><a>@x.Status</a></span> </div>*@
+                                    <div class="comments_box"> <span class="meta_comment" style="color:red;font-weight:bold;"><a href="/About/DeleteAboutContent/@x.Id">SİL</a></span> <span class="meta_more" style="color:green;font-weight:bold;"><a href="/About/EditAboutContent/@x.Id">DÜZENLE</a></span>  <span class="meta_comment" style="color:red;font-weight:bold;"><a href="/About/MakeActive/@x.Id" style="color:burlywood;">AKTİF YAP</a></span> <span class="meta_comment" style="color:red;font-weight:bold;"><a>@x.Status</a></span> </div>
+                                    @*<div><p>@x.Content.Substring(0, 50)</p></div>*@
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pagination_area">
+            <nav>
+                <ul class="pagination">
+
+                    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("AboutUsContents", new { sayfa }))
+
+                </ul>
+            </nav>
+        </div>
+
+        <br /><br />
+        <a href="/About/AddAboutContent" class="btn btn-primary">YENİ HAKKINDA YAZISI</a>
+        <br />
+
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <script src="~/FrontendFiles/AdminAbout/assets/js/jquery.min.js"></script>
+    <script src="~/FrontendFiles/AdminAbout/assets/js/bootstrap.min.js"></script>
+    <script src="~/FrontendFiles/AdminAbout/assets/js/wow.min.js"></script>
+    <script src="~/FrontendFiles/AdminAbout/assets/js/slick.min.js"></script>
+    <script src="~/FrontendFiles/AdminAbout/assets/js/custom.js"></script>
+
+
+}
+<br />

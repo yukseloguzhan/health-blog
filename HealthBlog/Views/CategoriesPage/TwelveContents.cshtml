@@ -1,0 +1,40 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@model IEnumerable<Content>
+
+
+
+<div class="main-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+
+                    @foreach (var x in Model)
+                    {
+
+
+
+                        <div class="col-md-4">
+                            <div class="mn-img">
+                                <img src="~/FrontendFiles/ContentImages/@x.ContentImage" style="width:255px;height:162px;"/>
+                                <div class="mn-title">
+                                    <a href="/Blog/BlogSingle/@x.ContentId">@x.ContentTitle</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    }
+
+                </div>
+            </div>
+
+            @Html.Action("ReadMore", "CategoriesPage")
+
+
+
+        </div>
+    </div>
+</div>

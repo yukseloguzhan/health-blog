@@ -1,0 +1,29 @@
+﻿
+
+@using HealthBlog.Entities.Concrete
+@model IEnumerable<Content>
+
+
+
+
+<div class="sidebar-box ftco-animate">
+    <h3 style="color:brown;font-weight:bold;">Son Yazılar</h3>
+
+    @foreach (var x in Model)
+    {
+
+        <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(/FrontendFiles/ContentImages/@x.ContentImage);"></a>
+            <div class="text">
+                <h3 class="heading" style="color:greenyellow;font-weight:bold;"><a href="/Blog/BlogSingle/@x.ContentId">@x.ContentTitle</a></h3>
+                <div class="meta">
+                    <div><span class="icon-calendar" style="color:green;">@x.ContentDate.ToString()</span></div>
+                    <div style="color:dodgerblue;font-weight:bold;"><a href="/Writer/WriterDetail/@x.Writer.WriterId"><span class="icon-person">@x.Writer.WriterTitle @x.Writer.WriterName @x.Writer.WriterSurname</span></a></div>
+                    <div><a href="/CategoriesPage/CategoryDetail/@x.CategoryId" style="color:crimson"><span class="icon-chat"></span>@x.Category.CategoryName</a></div>
+                </div>
+                <hr />
+            </div>
+        </div>
+
+    }
+</div>

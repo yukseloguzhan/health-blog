@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "İstatistikler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2 style="color:darkred;font-weight:bold;">İstatistikler</h2>
+
+
+
+@section CssFiles {
+
+    <link href="~/FrontendFiles/StatisticsTemplate/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/FrontendFiles/StatisticsTemplate/css/font-awesome.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="~/FrontendFiles/StatisticsTemplate/css/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+
+}
+
+@section Scripts {
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="~/FrontendFiles/StatisticsTemplate/js/jquery.min.js"></script>
+    <script src="~/FrontendFiles/StatisticsTemplate/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script src="~/FrontendFiles/StatisticsTemplate/js/main.js"></script>
+    <script src="~/FrontendFiles/StatisticsTemplate/js/Chart1.js"></script>
+
+}
+
+
+
+<div class="total-content" >
+    <div class="list_of_members">
+        <div class="sales" style="background-color:#1abc9c">
+            <div class="icon-text">
+                <h3>@ViewBag.dgr1</h3>
+                <p style="text-align:center;">Toplam İçerik Sayısı</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="new-users" style="background-color:#2ecc71">
+
+            <div class="icon-text">
+                <h3>@ViewBag.dgr2</h3>
+                <p style="text-align:center;">Toplam Kategori Sayısı</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="orders" style="background-color:#3498db">
+
+            <div class="icon-text">
+                <h3>@ViewBag.dgr3</h3>
+                <p style="text-align:center;">Toplam Yazar Sayısı</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="visitors" style="background-color:#9b59b6">
+
+            <div class="icon-text">
+                <h3>@ViewBag.dgr4: @ViewBag.dgr5</h3>
+                <p style="text-align:center;">En çok yazılan kategori</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+
+<div class="total-content">
+    <div class="list_of_members">
+        <div class="sales" style="background-color:#ffd800">
+            <div class="icon-text">
+                <h3>@ViewBag.dgr6: @ViewBag.dgr7</h3>
+                <p style="text-align:center;">En çok yazan yazar</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="orders" style="background-color:#ff006e">
+
+            <div class="icon-text">
+                <h3>@ViewBag.dgr8</h3>
+                <p style="text-align:center;">Bugün yazılan yazı</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="orders" style="background-color:#2980b9">
+
+            <div class="icon-text">
+                <h3>@ViewBag.dgr9</h3>
+                <p style="text-align:center;">Bugün gelen mesaj sayısı</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+
+        <div class="visitors" style="background-color:#ff6a00">
+
+            <div class="icon-text">
+                <h3>@ViewBag.dgr10</h3>
+                <p style="text-align:center;">Toplam gelen mesaj sayısı</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+    @*<div class="new-users" style="background-color:#2ecc71">
+
+        <div class="icon-text">
+            <h3>18</h3>
+            <p>Ürün Sayısı</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="orders" style="background-color:#3498db">*@
+
+        @*<div class="icon-text">
+            <h3>785</h3>
+            <p>Personel Sayısı</p>
+        </div>*@
+        @*<div class="clearfix"></div>
+    </div>*@
+
+
+</div>

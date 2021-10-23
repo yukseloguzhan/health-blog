@@ -1,0 +1,38 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@model IEnumerable<Content>
+
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">SON YAZILARIM</span>
+                <h2>Sağlık sorunlarına taze çözümler</h2>
+            </div>
+        </div>
+        <div class="row d-flex">
+
+            @foreach (var x in Model)
+            {
+
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="blog-entry align-self-stretch">
+                        <a href="/Blog/BlogSingle/@x.ContentId" class="block-20 rounded" style="background-image: url(../../FrontendFiles/ContentImages/@x.ContentImage);">
+                        </a>
+                        <div class="text p-4">
+                            <div class="meta mb-2">
+                                <div><a href="#" style="color:darkgoldenrod;font-weight:bold;">@x.ContentDate.ToString("dd MMM yyyy")</a></div>
+                                <div><a href="/Writer/WriterDetail/@x.Writer.WriterId" style="color:blue;">@x.Writer.WriterTitle @x.Writer.WriterName @x.Writer.WriterSurname</a></div>
+                                <div><a href="#" class="meta-chat" style="color:brown;"><span class="fa fa-comment"></span> 3</a></div>
+                            </div>
+                            <h3 class="heading"><a href="/Blog/BlogSingle/@x.ContentId">@x.ContentValue.Substring(0, 75)</a></h3>
+                        </div>
+                    </div>
+                </div>
+            }
+             
+        </div>
+    </div>
+</section>

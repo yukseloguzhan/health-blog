@@ -1,0 +1,48 @@
+﻿@using HealthBlog.Entities.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Category>
+
+
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-boardered" background="/FrontendFiles/main/images/kategori.jpg">
+    <tr>
+        <th>ID</th>
+        <th>Kategori Adı</th>
+        <th>Açıklaması</th>
+        <th>Durumu</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>DETAYLAR</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.CategoryId</td>
+            <td>@x.CategoryName</td>
+            <td>@x.CategoryDescription</td>
+            <td>@x.CategoryStatus</td>
+            <td><a href="/Category/CategoryDelete/@x.CategoryId" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Category/EditCategory/@x.CategoryId" class="btn btn-warning">GÜNCELLE</a></td>
+            <td><a href="/Content/ContentListByCategoryId/@x.CategoryId" class="btn btn-success">DETAYLAR</a></td>
+        </tr>
+    }
+
+</table>
+
+<div class="row mt-5">
+    <div class="col">
+        <div class="block-27">
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("MainIndex", new { sayfa }))
+        </div>
+    </div>
+</div>
+
+<a href="/Category/AddCategory" class="btn btn-primary">YENİ KATEGORİ</a>
+

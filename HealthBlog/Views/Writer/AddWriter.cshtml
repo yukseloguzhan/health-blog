@@ -1,0 +1,49 @@
+﻿@model HealthBlog.Entities.Concrete.Writer
+
+@{
+    ViewBag.Title = "Yazar Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddWriter</h2>
+
+
+@using (Html.BeginForm("AddWriter", "Writer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+
+        @Html.Label("Yazar Adı:")
+        @Html.TextBoxFor(x => x.WriterName, new { PlaceHolder = "Yazar ismi girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterName, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Yazar Soyadı:")
+        @Html.TextBoxFor(x => x.WriterSurname, new { PlaceHolder = "Yazar soyadı girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterSurname, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Yazar Açıklaması Yazın:")
+        @Html.TextAreaFor(x => x.WriterAbout, new { PlaceHolder = "Yazar açıklaması girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterAbout, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Yazar Mail:")
+        @Html.TextBoxFor(x => x.WriterMail, new { PlaceHolder = "Yazar mail adresi girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterMail, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Yazar şifresi giriniz:")
+        @Html.TextBoxFor(x => x.WriterPassword, new { PlaceHolder = "Yazar şifresi girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Yazar unvanı giriniz:")
+        @Html.TextBoxFor(x => x.WriterTitle, new { PlaceHolder = "Yazar unvanı girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterTitle, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Yazar Görsel Yükleyiniz:")
+        <br />
+        <input type="file" name="WriterImage" />
+        <br /><br />
+        <button class="btn btn-info">Kaydet</button>
+
+    </div>
+}
+
+
+

@@ -1,0 +1,27 @@
+﻿@using HealthBlog.Entities.Concrete
+@model  List<Comment>
+
+
+
+<h3 class="mb-5">@ViewBag.total Yorum</h3>
+<ul class="comment-list">
+
+    @foreach (var x in Model)
+    {
+
+        <li class="comment">
+            <div class="vcard bio">
+                <img src="~/FrontendFiles/main/images/person_1.jpg" alt="Image placeholder">
+            </div>
+            <div class="comment-body">
+                <div><h3>@x.FullName <span style="font-size:12px;">   @x.Mail</span></h3></div>
+                <div class="meta">@x.CreateDate</div>
+                <p>@x.Message</p>
+               
+            </div>
+        </li>
+
+    }
+
+
+</ul>

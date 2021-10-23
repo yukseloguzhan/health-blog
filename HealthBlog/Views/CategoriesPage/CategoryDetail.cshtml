@@ -1,0 +1,99 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<Content>
+
+
+@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+
+<!-- END nav -->
+<section class="hero-wrap hero-wrap-2" style=" background-image: url(~/FrontendFiles/main/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/CategoriesPage/Index/">KATEGORİLER<i class="ion-ios-arrow-forward"></i></a></span> <span><i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 style="font-weight:800;font-size:100px;" class="mb-0 bread">@ViewBag.categoryname</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+
+                <!--for dön-->
+                @foreach (var x in Model)
+                {
+
+
+
+                    <div class="cases-wrap d-md-flex align-items-center">
+                        <div class="img" style=" background-image: url(/FrontendFiles/ContentImages/@x.ContentImage);"></div>
+                        <div class="text pl-md-5">
+                            <span class="cat">@x.Writer.WriterTitle @x.Writer.WriterName @x.Writer.WriterSurname</span>
+                            <h2>@x.ContentTitle</h2>
+                            <p>@x.ContentValue.Substring(0,120) ...</p>
+                            <p><a href="/Blog/BlogSingle/@x.ContentId" class="btn btn-primary">DEVAMINI OKU</a></p>
+                        </div>
+                    </div>
+
+                }
+
+
+
+
+                <div class="row mt-5">
+                    <div class="col">
+                        <div class="block-27">
+                            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("CategoryDetail", new { sayfa }))
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
+                <div class="sidebar-box">
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <span class="fa fa-search"></span>
+                            <input type="text" class="form-control" placeholder="ARA">
+                        </div>
+                    </form>
+                </div>
+
+                @Html.Action("CategoryList", "Blog")
+
+
+                @Html.Action("RecentlyPost", "CategoriesPage")
+
+
+                <div class="sidebar-box ftco-animate">
+                    <h3>Tag Cloud</h3>
+                    <div class="tagcloud">
+                        <a href="#" class="tag-cloud-link">home</a>
+                        <a href="#" class="tag-cloud-link">builder</a>
+                        <a href="#" class="tag-cloud-link">build</a>
+                        <a href="#" class="tag-cloud-link">create</a>
+                        <a href="#" class="tag-cloud-link">make</a>
+                        <a href="#" class="tag-cloud-link">construction</a>
+                        <a href="#" class="tag-cloud-link">house</a>
+                        <a href="#" class="tag-cloud-link">architect</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section> <!-- .section -->

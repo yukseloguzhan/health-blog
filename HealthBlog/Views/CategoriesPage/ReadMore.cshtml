@@ -1,0 +1,21 @@
+﻿
+
+@using HealthBlog.Entities.Concrete
+@model IEnumerable<Content>
+
+
+<div class="col-lg-3">
+    <div class="mn-list">
+        <h2>Daha Fazla Oku</h2>
+        <ul>
+
+            @foreach (var x in Model)
+            {
+
+                <li><a href="/Blog/BlogSingle/@x.ContentId">@x.ContentTitle</a></li>
+
+            }
+
+        </ul>
+    </div>
+</div>

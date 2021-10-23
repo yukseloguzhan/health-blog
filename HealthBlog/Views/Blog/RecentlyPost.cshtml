@@ -1,0 +1,27 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@model IEnumerable<Content>
+
+
+<aside class="single_sidebar_widget popular_post_widget">
+    <h3 class="widget_title" style="color:brown;font-weight:bold;">En Son Yazılar</h3>
+
+    @foreach (var x in Model)
+    {
+
+
+
+        <div class="media post_item">
+            <img src="~/FrontendFiles/ContentImages/@x.ContentImage" alt="post" style="width:65px;height:45px;">
+            <div class="media-body">
+                <a href="/Blog/BlogSingle/@x.ContentId">
+                    <h3 style="color:dodgerblue;">@x.ContentTitle</h3>
+                </a>
+                <p>@x.ContentDate</p>
+            </div>
+        </div>
+
+    }
+
+
+</aside>

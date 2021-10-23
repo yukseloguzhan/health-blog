@@ -1,0 +1,144 @@
+﻿@*@model HealthBlog.Entities.Concrete.Message*@
+
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url(../../FrontendFiles/main/images/bg_2.jpg);
+    " data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/Default/AnaSayfa/">Ana Sayfa <i class="ion-ios-arrow-forward"></i></a></span> <span>İletişime Geçiniz <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-0 bread">İLETİŞİM</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row no-gutters">
+                        <div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <h3 class="mb-4">İletişim Bilgileriniz</h3>
+                                <div id="form-message-warning" class="mb-4"></div>
+                                <div id="form-message-success" class="mb-4">
+
+                                </div>
+
+
+
+                                <form method="POST" id="contactForm" action="/Message/IncomingMessages/" name="contactForm" class="contactForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="name">Adınız Soyadınız</label>
+                                                <input type="text" class="form-control" name="NameAndSurname" id="name" placeholder="Name and Surname" required oninvalid="this.setCustomValidity('*Zorunlu alan!')"
+                                                       oninput="this.setCustomValidity('')">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="email">Email Adresi</label>
+                                                <input type="email" class="form-control" name="SenderMail" id="email" placeholder="Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Konu</label>
+                                                <input type="text" class="form-control" name="Subject" id="subject" placeholder="Subject" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="#">Mesajınız</label>
+                                                <textarea name="MessageContent" class="form-control" id="message" cols="30" rows="4" placeholder="Message" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Mesajı Gönder" class="btn btn-primary" onclick="myFunction()" id="gonder">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                               
+
+                                <script>
+                                    $('#gonder').click(function () {
+                                        swal("TEBRİKLER!", "Başarılı şekilde eklendi!", "success");                                 
+                                    });
+
+                                    function myFunction() {
+                                        setTimeout(function () { }, 3000);
+                                    }
+
+                                </script>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-5 d-flex align-items-stretch">
+                            <div class="info-wrap bg-primary w-100 p-md-5 p-4">
+                                <h3>İLETİŞİM</h3>
+                                <p class="mb-4">Önerileriniz bizim için önemlidir...</p>
+                                <div class="dbox w-100 d-flex align-items-start">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="text pl-3">
+                                        <p><span>Address:</span> Huzur Mahallesi Abdullah Azam Caddesi Caner Sokak No:3 D:2 Ümraniye/İstanbul</p>
+                                    </div>
+                                </div>
+                                <div class="dbox w-100 d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-phone"></span>
+                                    </div>
+                                    <div class="text pl-3">
+                                        <p><span>Phone:</span> <a href="tel://1234567920">+ 0539 954 69 04</a></p>
+                                    </div>
+                                </div>
+                                <div class="dbox w-100 d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-paper-plane"></span>
+                                    </div>
+                                    <div class="text pl-3">
+                                        <p><span>Email:</span> <a href="mailto:yukseloguzhan53@gmail.com">yukseloguzhan53@gmail.com</a></p>
+                                    </div>
+                                </div>
+                                <div class="dbox w-100 d-flex align-items-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-globe"></span>
+                                    </div>
+                                    <div class="text pl-3">
+                                        <p><span>Instagram</span> <a href="https://www.instagram.com/?hl=tr">https://www.instagram.com/?hl=tr</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.891932648392!2d29.152777915374863!3d41.0276201792988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacedb123dbc81%3A0x1c801258d171a2ec!2zUGFyc2VsbGVyLCBUYcWfa8O2cHLDvCBDZC4sIDM0NzczIMOcbXJhbml5ZS_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1630511879086!5m2!1str!2str" width="1520" height="490" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+

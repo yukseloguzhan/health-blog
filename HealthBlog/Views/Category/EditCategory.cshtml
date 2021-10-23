@@ -1,0 +1,34 @@
+﻿@model HealthBlog.Entities.Concrete.Category
+
+@{
+    ViewBag.Title = "Kategori Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>KATEGORİ GÜNCELLE</h2>
+<br />
+
+@using (Html.BeginForm("EditCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Kategori ID:")
+        @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori Adı:")
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori Açıklaması:")
+        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori Durumu Girin:")
+        @Html.DropDownListFor(x => x.CategoryStatus, (List<SelectListItem>)ViewBag.StatusType, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">GÜNCELLE</button>
+
+
+    </div>
+
+}
+
+

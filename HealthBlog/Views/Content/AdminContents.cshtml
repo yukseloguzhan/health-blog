@@ -1,0 +1,162 @@
+﻿
+
+@using HealthBlog.Entities.Concrete
+@*@using PagedList;
+    @using PagedList.Mvc;*@
+
+@model List<Content>
+
+
+@{
+    ViewBag.Title = "İçerik Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+
+@{ string color = ""; }
+
+
+
+<body class="hold-transition sidebar-mini">
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+
+        <div class="card" style="background-color:aquamarine;">
+            <div class="card-header">
+
+
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 15%">
+                                Oluşturan Yazar
+                            </th>
+                            <th style="width: 10%">
+                                Durum
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            if (item.CategoryId == 1)
+                            {
+                                color = "badge badge-warning";
+                            }
+
+                            if (item.CategoryId == 2)
+                            {
+                                color = "badge badge-success";
+                            }
+
+                            if (item.CategoryId == 3)
+                            {
+                                color = "badge badge-info";
+                            }
+
+                            if (item.CategoryId == 4)
+                            {
+                                color = "badge badge-secondary";
+                            }
+
+
+                            <tr>
+                                <td>
+                                    @item.ContentId
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.ContentTitle
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @item.ContentDate
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="~/FrontendFiles/WriterImages/@item.Writer.WriterImage">
+                                            @item.Writer.WriterTitle @item.Writer.WriterName @item.Writer.WriterSurname
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+
+                                    @if (item.ContentStatus == true)
+                                    {
+                                        <span class="badge badge-success">@item.ContentStatus</span>
+                                    }
+
+
+                                    @if (item.ContentStatus == false)
+                                    {
+                                        <span class="badge badge-warning">@item.ContentStatus</span>
+                                    }
+                                </td>
+                                <td class="project-state">
+                                    <span class="@color">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.ContentId">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Yazılar
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/Content/EditContent/@item.ContentId">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/Content/DeleteContent/@item.ContentId">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+                @*<div class="block-27">
+                        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index","Content", new { sayfa }))
+                    </div>*@
+
+
+            </div>
+
+        </div>
+
+    </section>
+</body>
+
+
+<a href="/Content/AddContent/" class="btn btn-primary">Yeni İçerik Ekle</a>

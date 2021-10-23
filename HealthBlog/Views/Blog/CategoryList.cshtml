@@ -1,0 +1,35 @@
+﻿
+@using HealthBlog.Entities.Concrete
+@model IEnumerable<Category>
+
+@{ int a = 0;}
+
+<aside class="single_sidebar_widget post_category_widget">
+    <h4 class="widget_title" style="color:brown;font-weight:bold;">Kategoriler</h4>
+    <ul class="list cat-list">
+
+        @foreach (var x in Model)
+        {
+
+            if (ViewBag.counter[a] != 0)
+            {
+                <li>
+                    <a href="/CategoriesPage/CategoryDetail/@x.CategoryId" class="d-flex">
+                        <p style="color:green;">@x.CategoryName</p>
+                        <p style="color:green;"> (@ViewBag.counter[a])</p>
+                        @{ a++;}
+                    </a>
+                </li>
+            }
+            else
+            {
+                 a++;
+            }
+
+
+
+
+        }
+
+    </ul>
+</aside>

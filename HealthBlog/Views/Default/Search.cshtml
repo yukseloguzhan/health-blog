@@ -1,0 +1,219 @@
+﻿
+
+@using HealthBlog.Entities.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Content>
+
+@{
+    ViewBag.Title = "Blog Yazıları";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+@section CssFiles {
+    <link rel="shortcut icon" type="image/x-icon" href="~/FrontendFiles/BlogContent/assets/img/favicon.ico">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/slicknav.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/hamburgers.min.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/slick.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/style.css">
+    <link rel="stylesheet" href="~/FrontendFiles/BlogContent/assets/css/responsive.css">
+
+}
+
+
+
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+
+
+                    @foreach (var x in Model)
+                    {
+
+
+
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/FrontendFiles/ContentImages/@x.ContentImage" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>@x.ContentDate.ToString("dd")</h3>
+                                    <p>@x.ContentDate.ToString("MMM")</p>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="/Blog/BlogSingle/@x.ContentId">
+                                    <h2 class="blog-head" style="color: #2d2d2d;">@x.ContentTitle</h2>
+                                </a>
+                                <p>
+                                    @x.ContentValue
+                                </p>
+                                <ul class="blog-info-link">
+                                    <li><a href="/CategoriesPage/CategoryDetail/@x.Category.CategoryId"><i class="fa fa-flag"></i>@x.Category.CategoryName</a></li>
+                                    <li><a href="/Writer/WriterDetail/@x.Writer.WriterId"><i class="fa fa-user"></i>@x.Writer.WriterTitle @x.Writer.WriterName @x.Writer.WriterSurname</a></li>
+                                    <li><a href="#"><i class="fa fa-comments"></i>03 Comments</a></li>
+                                </ul>
+                            </div>
+                        </article>
+
+
+
+
+                    }
+
+                    <div class="row mt-5">
+                        <div class="col">
+                            <div class="block-27">
+                                @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Search", new { sayfa }))
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder='ARA'
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Search Keyword'">
+                                    <div class="input-group-append">
+                                        <button class="btns" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">
+                                Search
+                            </button>
+                        </form>
+                    </aside>
+
+
+                    @Html.Action("CategoryList", "Blog")
+
+
+                    @Html.Action("RecentlyPost", "Blog")
+
+
+                    <aside class="single_sidebar_widget tag_cloud_widget">
+                        <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
+                        <ul class="list">
+                            <li>
+                                <a href="#">project</a>
+                            </li>
+                            <li>
+                                <a href="#">love</a>
+                            </li>
+                            <li>
+                                <a href="#">technology</a>
+                            </li>
+                            <li>
+                                <a href="#">travel</a>
+                            </li>
+                            <li>
+                                <a href="#">restaurant</a>
+                            </li>
+                            <li>
+                                <a href="#">life style</a>
+                            </li>
+                            <li>
+                                <a href="#">design</a>
+                            </li>
+                            <li>
+                                <a href="#">illustration</a>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <aside class="single_sidebar_widget instagram_feeds">
+                        <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
+                        <ul class="instagram_row flex-wrap">
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/FrontendFiles/BlogContent/assets/img/post/post_5.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/FrontendFiles/BlogContent/assets/img/post/post_6.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/FrontendFiles/BlogContent/assets/img/post/post_7.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/FrontendFiles/BlogContent/assets/img/post/post_8.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/FrontendFiles/BlogContent/assets/img/post/post_9.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/FrontendFiles/BlogContent/assets/img/post/post_10.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+
+    <script src="~/FrontendFiles/BlogContent/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/popper.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/bootstrap.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/owl.carousel.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/slick.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/wow.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/animated.headline.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.magnific-popup.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/gijgo.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.sticky.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/waypoints.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.countdown.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/hover-direction-snake.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/contact.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.form.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.validate.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/mail-script.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/plugins.js"></script>
+    <script src="~/FrontendFiles/BlogContent/assets/js/main.js"></script>
+
+}
+
+
+

@@ -1,0 +1,34 @@
+﻿@using HealthBlog.Entities.Concrete
+@model List<Category>
+
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>KATEGORİ TABLOSU</h2>
+
+    <table class="table table-boardered">
+        <tr>
+            <th>ID</th>
+            <th>CATEGORY NAME</th>
+            <th>SIL</th>
+            <th>GÜNCELLE</th>
+            <th>BAŞLIKLAR</th>
+
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.CategoryId</td>
+                <td>@x.CategoryName</td>
+                <td><a href="/Category/CategoryDelete/@x.CategoryId" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Category/EditCategory/@x.CategoryId" class="btn btn-success">GÜNCELLE</a></td>
+                <td><a href="/Category/CategoryGet/@x.CategoryId" class="btn btn-primary">BAŞLIKLAR</a></td>
+            </tr>
+        }
+
+    </table>
+
+    <a href="/Category/AddCategory" class="btn btn-primary">NEW CATEGORY</a>

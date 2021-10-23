@@ -1,0 +1,28 @@
+﻿@model HealthBlog.Entities.Concrete.Category
+
+@{
+    ViewBag.Title = "Kategori Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 style="color:aqua">Yeni Kategori</h3>
+<br />
+<br />
+
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+
+        @Html.Label("Kategori Adı:")
+        @Html.TextBoxFor(x => x.CategoryName, new { PlaceHolder = "Kategori ismi girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+        <br /><br />
+        @Html.Label("Acıklama Yazın:")
+        @Html.TextAreaFor(x => x.CategoryDescription, new { PlaceHolder = "Kategori açıklaması girin...", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryDescription, "", new { @style = "color:red" })
+        <br /><br />
+        <button class="btn btn-info">Kaydet</button>
+
+    </div>
+}
+

@@ -1,0 +1,42 @@
+﻿
+@model HealthBlog.Entities.Concrete.Wrong
+
+
+@{
+    ViewBag.Title = "Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>GÜNCELLE</h2>
+<br />
+
+@using (Html.BeginForm("EditWrongInformation", "KnownWrong", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Bilgi ID:")
+        @Html.TextBoxFor(x => x.WrongId, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bilgi Açıklaması:")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description, "", new { @style = "color:red" })
+        <br />
+        @Html.Label("Bilgi Durumu Girin:")
+        @Html.DropDownListFor(x => x.Status, (List<SelectListItem>)ViewBag.StatusType, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bilgi kategorisi girin:")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.valueCategory, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bilgi yazarı girin:")
+        @Html.DropDownListFor(x => x.WriterId, (List<SelectListItem>)ViewBag.valueWriter, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bilgi Tarihi girin:")
+        @Html.TextBoxFor(x => x.CreatedDate, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">GÜNCELLE</button>
+
+
+    </div>
+
+}
+

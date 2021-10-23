@@ -1,0 +1,30 @@
+﻿@model HealthBlog.Entities.Concrete.ImageFile
+
+@{
+    ViewBag.Title = "Resim Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add Images</h2>
+
+
+@using (Html.BeginForm("AddImages", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+
+        @Html.Label("Resim başlığı:")
+        @Html.TextBoxFor(x => x.ImageName, new { PlaceHolder = "Başlık girin...", @class = "form-control" })
+        <br />
+        @Html.Label("Resim açıklaması:")
+        @Html.TextBoxFor(x => x.ImageDescription, new { PlaceHolder = "Açıklama girin...", @class = "form-control" })
+        <br />
+        @Html.Label("Hangi içeriğe resim ekleyeceğinizi seçiniz:")
+        @Html.DropDownListFor(x => x.ContentId, (List<SelectListItem>)ViewBag.valueContent, new { @class = "form-control" })
+
+        <br />
+        <input type="file" name="ImagePath" />
+        <br /><br />
+        <button class="btn btn-info">Kaydet</button>
+
+    </div>
+}
