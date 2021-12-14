@@ -49,5 +49,11 @@ namespace HealthBlog.Controllers
             return View(commentManager.GetByID(id));
         }
 
+        public ActionResult Popup2(int id)
+        {
+            var entity = commentManager.GetByID(id);
+            return PartialView(entity);
+        }
+
     }
 }
